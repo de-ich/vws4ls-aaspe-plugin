@@ -1,0 +1,12 @@
+﻿{
+  "TemplateIdConceptDescription": "www.example.com/ids/cd/DDDD_DDDD_DDDD_DDDD",
+  "AssetIdByPartNumberDict": {
+    "CON-A": "https://www.hersteller_A.de/Gehaeuse_A_Type",
+    "CON-B": "https://www.hersteller_A.de/Gehaeuse_A_Type",
+    "TERM-X": "https://hersteller_x.de/Kontakt_X_Type",
+    "TERM-Y": "https://hersteller_y.de/Kontakt_Y_Type",
+    "WIR-1": "https://www.hersteller_Leitung.de/Leitung_Gruen_Type",
+    "WIR-2": "https://www.hersteller_Leitung.de/Leitung_Rot_Type",
+    "WIR-3": "https://www.hersteller_Leitung.de/Leitung_Schwarz_Type"
+  }
+}
