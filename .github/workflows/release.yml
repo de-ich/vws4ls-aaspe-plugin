@@ -60,6 +60,6 @@ jobs:
       - name: Upload release
         uses: AButler/upload-release-assets@v3.0
         with:
-          files: "../AasxPluginVws4ls.zip"
+          files: "../AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           release-tag: "v${{ steps.inferVersion.outputs.version }}"
