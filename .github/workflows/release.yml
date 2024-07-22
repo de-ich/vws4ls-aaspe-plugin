@@ -90,8 +90,9 @@ jobs:
               throw "The file $path does not exist"
           }
       - name: Upload the release assets
-        uses: AButler/upload-release-assets@v2.0
+        uses: Hs1r1us/Release-AIO@v2.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: "artefacts/release/${{ steps.inferVersion.outputs.version }}/*.zip"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: "v${{ steps.inferVersion.outputs.version }}"
+          tag_name: "v${{ steps.inferVersion.outputs.version }}"
+          asset_files: "artefacts/release/${{ steps.inferVersion.outputs.version }}/AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
