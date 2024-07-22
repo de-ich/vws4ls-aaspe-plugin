@@ -11,7 +11,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    permissions: write-all
+    permissions:
+      contents: write
 
     steps:
       - name: Infer the version from the github ref
@@ -80,7 +81,7 @@ jobs:
           Write-Host "Creating release archive: $target"
 
           Rename-Item -Path ".\src\AasxPluginVws4ls\bin\Debug\net6.0-windows" -NewName "AasxPluginVws4ls"
-          Compress-Archive -Path .\src\AasxPluginVws4ls\bin\Debug\AasxPluginVws4ls\* -DestinationPath $target
+          Compress-Archive -Path .\src\AasxPluginVws4ls\bin\Debug\AasxPluginVws4ls -DestinationPath $target
       - name: Check
         run: |
           ls artefacts\release
