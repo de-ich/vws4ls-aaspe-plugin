@@ -89,9 +89,9 @@ jobs:
           {
               throw "The file $path does not exist"
           }
-      - name: Upload release
-        uses: AButler/upload-release-assets@v3.0
+      - name: Upload the release assets
+        uses: AButler/upload-release-assets@v2.0
         with:
           files: "artefacts/release/${{ steps.inferVersion.outputs.version }}/*.zip"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: ${{ github.ref_name }}
+          release-tag: "v${{ steps.inferVersion.outputs.version }}"
