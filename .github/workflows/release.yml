@@ -56,10 +56,17 @@ jobs:
       - name: Create archive
         run: |
           Rename-Item -Path ".\src\AasxPluginVws4ls\bin\Debug\net6.0-windows" -NewName "AasxPluginVws4ls"
-          Compress-Archive -Path .\src\AasxPluginVws4ls\bin\Debug\AasxPluginVws4ls\* -DestinationPath "..\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
+          Compress-Archive -Path .\src\AasxPluginVws4ls\bin\Debug\AasxPluginVws4ls\* -DestinationPath "artefacts\release\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
+      - name: Check
+        run: |
+          ls artefacts\release
+          $path = "artefacts\release\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
+          if (!(Test-Path $path))
+          {
+              throw "The file $path does not exist"
+          }
       - name: Upload release
         uses: AButler/upload-release-assets@v3.0
         with:
-          files: "../AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
+          files: "artefacts/release/*"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: "v${{ steps.inferVersion.outputs.version }}"
