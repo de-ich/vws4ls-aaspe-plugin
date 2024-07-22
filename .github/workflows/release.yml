@@ -5,8 +5,8 @@ name: .NET
 
 on:
   push:
-    tags: 
-      - 'v*'
+    tags:
+      - "v*"
 
 jobs:
   build:
@@ -79,16 +79,16 @@ jobs:
               throw "The release directory does not exist: $releaseDir"
           }
 
-          $target = Join-Path $releaseDir ("..\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip")
+          $target = Join-Path $releaseDir ("AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip")
 
-          Write-Host "Moving archive: $target"
+          Write-Host "Moving archive to: $target"
 
           ls $releaseDir
 
       - name: Check
         run: |
           ls artefacts\release
-          ls artefacts\release\${{ steps.inferVersion.outputs.version }}
+          ls artefacts\release\${{ steps.inferVersion.outputs.version }}\${{ steps.inferVersion.outputs.version }}
           $path = "artefacts\release\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
           if (!(Test-Path $path))
           {
