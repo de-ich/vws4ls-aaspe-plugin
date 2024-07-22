@@ -17,7 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: cd ..
+    - run: ls
     - run: git clone https://github.com/eclipse-aaspe/package-explorer
+    - run: ls
     - run: cd vws4ls-aaspe-plugin
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
