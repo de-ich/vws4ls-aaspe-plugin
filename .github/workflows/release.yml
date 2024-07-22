@@ -56,40 +56,35 @@ jobs:
 
       - name: Create archive
         run: |
-          Rename-Item -Path ".\src\AasxPluginVws4ls\bin\Debug\net6.0-windows" -NewName "AasxPluginVws4ls"
-          Compress-Archive -Path .\src\AasxPluginVws4ls\bin\Debug\AasxPluginVws4ls\* -DestinationPath "..\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
-          ls ..
-      - name: Move archive
-        working-directory: ./
-        run: |
-          Write-Host "Current working directory: $(Get-Location)"
-
           $version = '${{ steps.inferVersion.outputs.version }}'
           $releaseDir = Join-Path $(Get-Location) "artefacts\release\$version"
-          Write-Host "Release directory: $releaseDir"
 
           if (!(Test-Path $releaseDir))
           {
+              Write-Host "Creating release directory: $releaseDir"
               New-Item -ItemType Directory -Path $releaseDir
           }
 
           if (!(Test-Path $releaseDir))
           {
               New-Item -ItemType Directory -Path $releaseDir
-              throw "The release directory does not exist: $releaseDir"
           }
 
-          $target = Join-Path $releaseDir ("AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip")
+          $archiveName = ("AasxPluginVws4ls-v$version.zip")
+          Write-Host "Release archive name: $archiveName"
 
-          Write-Host "Moving archive to: $target"
 
-          ls $releaseDir
+          $target = Join-Path $releaseDir $archiveName
 
+          Write-Host "Creating release archive: $target"
+
+          Rename-Item -Path ".\src\AasxPluginVws4ls\bin\Debug\net6.0-windows" -NewName "AasxPluginVws4ls"
+          Compress-Archive -Path .\src\AasxPluginVws4ls\bin\Debug\AasxPluginVws4ls\* -DestinationPath $target
       - name: Check
         run: |
           ls artefacts\release
-          ls artefacts\release\${{ steps.inferVersion.outputs.version }}\${{ steps.inferVersion.outputs.version }}
-          $path = "artefacts\release\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
+          ls artefacts\release\${{ steps.inferVersion.outputs.version }}
+          $path = "artefacts\release\${{ steps.inferVersion.outputs.version }}\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
           if (!(Test-Path $path))
           {
               throw "The file $path does not exist"
