@@ -53,13 +53,42 @@ jobs:
         run: dotnet restore ./src/AasxPluginVws4ls.sln
       - name: Build
         run: dotnet build --no-restore ./src/AasxPluginVws4ls.sln
+
       - name: Create archive
         run: |
           Rename-Item -Path ".\src\AasxPluginVws4ls\bin\Debug\net6.0-windows" -NewName "AasxPluginVws4ls"
-          Compress-Archive -Path .\src\AasxPluginVws4ls\bin\Debug\AasxPluginVws4ls\* -DestinationPath "artefacts\release\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
+          Compress-Archive -Path .\src\AasxPluginVws4ls\bin\Debug\AasxPluginVws4ls\* -DestinationPath "..\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
+          ls ..
+      - name: Move archive
+        working-directory: ./
+        run: |
+          Write-Host "Current working directory: $(Get-Location)"
+
+          $version = '${{ steps.inferVersion.outputs.version }}'
+          $releaseDir = Join-Path $(Get-Location) "artefacts\release\$version"
+          Write-Host "Release directory: $releaseDir"
+
+          if (!(Test-Path $releaseDir))
+          {
+              New-Item -ItemType Directory -Path $releaseDir
+          }
+
+          if (!(Test-Path $releaseDir))
+          {
+              New-Item -ItemType Directory -Path $releaseDir
+              throw "The release directory does not exist: $releaseDir"
+          }
+
+          $target = Join-Path $releaseDir ("..\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip")
+
+          Write-Host "Moving archive: $target"
+
+          ls $releaseDir
+
       - name: Check
         run: |
           ls artefacts\release
+          ls artefacts\release\${{ steps.inferVersion.outputs.version }}
           $path = "artefacts\release\AasxPluginVws4ls-v${{ steps.inferVersion.outputs.version }}.zip"
           if (!(Test-Path $path))
           {
@@ -68,5 +97,5 @@ jobs:
       - name: Upload release
         uses: AButler/upload-release-assets@v3.0
         with:
-          files: "artefacts/release/*"
+          files: "artefacts/release/${{ steps.inferVersion.outputs.version }}/*.zip"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
