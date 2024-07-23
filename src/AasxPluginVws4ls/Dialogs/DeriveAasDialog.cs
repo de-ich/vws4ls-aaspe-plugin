@@ -70,7 +70,7 @@ namespace AasxPluginVws4ls.AnyUi
             // specify subject id of the derived AAS
             helper.AddSmallLabelTo(grid, 2, 0, content: "Subject ID for the Derived AAS:");
             AnyUiUIElement.SetStringFromControl(
-                helper.AddSmallTextBoxTo(grid, 2, 1, text: "www.my-company.com"),
+                helper.AddSmallTextBoxTo(grid, 2, 1, text: "https://www.my-company.com"),
                 (text) => { dialogResult.SubjectID = text; }
             );
 

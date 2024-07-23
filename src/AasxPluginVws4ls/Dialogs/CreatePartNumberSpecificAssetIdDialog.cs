@@ -26,7 +26,7 @@ namespace AasxPluginVws4ls.AnyUi
 
             var dialogResult = new CreatePartNumberSpecificAssetIdDialogResult()
             {
-                SubjectId = subjectId ?? "www.example.com",
+                SubjectId = subjectId ?? "https://www.example.com",
             };
 
             var uc = new AnyUiDialogueDataModalPanel("Configure Specific Asset ID");

@@ -49,7 +49,7 @@ namespace AasxPluginVws4ls
 
         private string GetNormalizedHostName(string hostName)
         {
-            return (hostName ?? "www.example.com").TrimEnd('/');
+            return (hostName ?? "https://www.example.com").TrimEnd('/');
         }
     }
 }
