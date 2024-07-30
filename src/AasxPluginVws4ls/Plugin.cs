@@ -165,7 +165,7 @@ namespace AasxIntegrationBase // the namespace has to be: AasxIntegrationBase
                 // import vec
                 res.Add(new AasxPluginResultSingleMenuItem()
                 {
-                    AttachPoint = "Import",
+                    AttachPoint = "Plugins",
                     MenuItem = new AasxMenuItem()
                     {
                         Name = "ImportVEC",
