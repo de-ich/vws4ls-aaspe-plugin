@@ -74,6 +74,21 @@ Ontop of the basic concept, a set of capabilities and associated parameters was 
 
 ## Provided Actions
 
+### VWS4LS: Import a VEC file into an AAS
+
+The *Vehicle Electric Container* (VEC, see [https://ecad-wiki.prostep.org/specifications/vec/](https://ecad-wiki.prostep.org/specifications/vec/)) is specification that allows to create a detailed product model of a wire harness that can - among others - be serialized as XML. To incorporate such a product specification into the AAS ecosystem, the plugin provides the action `Import a VEC file into an AAS`.
+
+This will
+- create two submodels *Product_BOM* and *Configuration_BOM* (cf. [Description of complex product structures](#description-of-complex-product-structures)) that describe the components and configurations that the wire harness represented by the VEC file consists of and
+- create a *ProductSpecification* submodel that
+  - imports the VEC file and
+  - creates several links between the elements from the new *Product_BOM* and *Configuration_BOM* submodels and the elements within the VEC file.
+
+To execute the action, follow the following steps:
+- Select an existing AAS
+- Execute`Workspace -> Create... -> VWS4LS: Import a VEC file into an AAS`
+- Select the VEC file to be imported
+
 ### VWS4LS: Derive a new AAS for a different tier
 
 To support the workflow of importing data from an existing AAS and creating an equivalent AAS under one's own ownership (see [Linking of equivalent AASes/assets](#linking-of-equivalent-aasesassets)), the plugin provides the action `Derive a new AAS for a different tier`. 
@@ -84,7 +99,7 @@ This will create a new AAS that contains
 - a deep copy of all submodels from the existing AAS
 
 To execute the action, follow the following steps:
-- Select an AAS existing AAS in the *AASPE*
+- Select an existing AAS in the *AASPE*
 - Execute `Workspace -> Create... -> VWS4LS: Derive a new AAS for a different tier`
 - Fill in the required fields in the dialog
     - Name of the Derived AAS: The name of the new AAS to be created
