@@ -126,6 +126,7 @@ namespace AasxPluginVws4ls
 
             if (env != null)
             {
+                env.Submodels ??= new List<ISubmodel>();
                 env.Submodels.Add(submodel);
             }
 

@@ -360,7 +360,7 @@ namespace AasxIntegrationBase // the namespace has to be: AasxIntegrationBase
                     var displayContext = args[2] as AnyUiContextPlusDialogs;
 
                     // make sure all parents are set so that we do not need to deal with this later
-                    ticket.Env.Submodels.ForEach(s => s.SetAllParents());
+                    ticket.Env.Submodels?.ForEach(s => s.SetAllParents());
 
                     IEnumerable<AasxPluginResultEventBase> resultEvents = null;
 
