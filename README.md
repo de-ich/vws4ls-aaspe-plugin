@@ -1,3 +1,6 @@
+[!IMPORTANT]
+This repository is archived as it has been moved to the *VWS4LS* organization: [https://github.com/VWS4LS/vws4ls-aaspe-plugin](https://github.com/VWS4LS/vws4ls-aaspe-plugin)
+
 # vws4ls-aaspe-plugin
 
 A plugin for the [Eclipse AASX Package Explorer<sup><small>TM</small></sup>](https://github.com/eclipse-aaspe/package-explorer) (*AASPE*) demonstrating various results from the research project [Asset Administration Shell for the Wiring Harness](https://arena2036.de/en/asset-administration-shell-for-wire-harness) (*VWS4LS*) funded by the German Federal Ministry of Education and Research.
