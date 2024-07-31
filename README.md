@@ -1,5 +1,5 @@
-[!IMPORTANT]
-This repository is archived as it has been moved to the *VWS4LS* organization: [https://github.com/VWS4LS/vws4ls-aaspe-plugin](https://github.com/VWS4LS/vws4ls-aaspe-plugin)
+> [!IMPORTANT]
+> This repository is archived as it has been moved to the *VWS4LS* organization: [https://github.com/VWS4LS/vws4ls-aaspe-plugin](https://github.com/VWS4LS/vws4ls-aaspe-plugin)
 
 # vws4ls-aaspe-plugin
 
